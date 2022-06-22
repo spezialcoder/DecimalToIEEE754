@@ -30,7 +30,7 @@ int main() {
     std::cout << std::endl;
     std::cout << (decimal < 0 ? 1 : 0) << " ";
     short *iBits = noiceInverseBitPrinter(((double)adecimal)/basicPow(10, getDigitSize(adecimal)));
-    addOne(iBits,22-(23-length));
+    if(!iBits[24]) addOne(iBits,22-(23-length));  // Bit 24, perfect match indicator
     bitPrinter<short>(&noiceBitPrinter(127+exp)[16],8);
     std::cout << " ";
     bitPrinter<short>(bits,23-length);
@@ -60,7 +60,7 @@ short* noiceInverseBitPrinter(double num) {
     if(!(num < 1 & num > 0)) {
         throw "Num must be in between 1 < num < 0, KNOW YOUR MATH!!!";
     }
-    short *bits = new short[23];
+    short *bits = new short[24];
     short *result = bits;
     for(bits;bits < result+23;bits++) *bits = 0;
     bits = result;
@@ -76,6 +76,7 @@ short* noiceInverseBitPrinter(double num) {
         bits++;
 
     }
+    result[24] = (x == num);
     return result;
 }
 
