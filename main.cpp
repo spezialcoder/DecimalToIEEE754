@@ -37,8 +37,6 @@ int main() {
     bitPrinter<short>(iBits,23-(23-length));
 
     std::cout << std::endl << std::endl;
-    system("pause");
-
 
     return 0;
 }
