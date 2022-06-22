@@ -100,6 +100,9 @@ int getDigitSize(int number) {
 }
 
 int basicPow(int x, int y) {
+    if(y == 0) {
+        return 1;
+    }
     int result = x;
     for(y;y > 1;y--) {
         result *= x;
